@@ -1,0 +1,10 @@
+export { useAuthStore, useRole } from './authStore';
+export type { AuthStatus } from './authStore';
+export { useUiStore } from './uiStore';
+export type { Theme, Density } from './uiStore';
+export { useEvidenceDrawerStore } from './evidenceDrawerStore';
+export { useNotificationStore } from './notificationStore';
+export { useDemoStore, DEMO_STEPS } from './demoStore';
+export type { DemoStep } from './demoStore';
+export { usePrefs } from './prefsStore';
+export { useProfileStore } from './profileStore';
