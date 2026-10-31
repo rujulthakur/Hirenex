@@ -1,0 +1,49 @@
+# Render blueprint for the monorepo (backend lives in ./trusthire-backend).
+# Optional: you can also create the service by hand in the Render dashboard (Root Directory = trusthire-backend, Runtime = Docker).
+services:
+  - type: web
+    name: trusthire-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./trusthire-backend/Dockerfile
+    dockerContext: ./trusthire-backend
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: MONGODB_URI
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: COOKIE_SAMESITE
+        value: none
+      - key: COOKIE_DOMAIN
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GMAIL_USER
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
+      - key: LLM_PROVIDER
+        value: groq
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: llama-3.3-70b-versatile
+      - key: DEMO_MODE
+        value: "true"
+      - key: APP_BASE_URL
+        sync: false
+      - key: PORTAL_BASE_URL
+        sync: false
